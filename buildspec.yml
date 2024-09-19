@@ -3,7 +3,11 @@ version: 0.2  # 0.2 권장
 phases:   # 빌드 단계
   install:
     runtime-versions:
-      java: corretto11
+      java: corretto17
+      commands:
+        - JAVA_HOME ="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
+        - JRE_HOME=${JAVA_HOME}
+        - JDK_HOME=${JAVA_HOME}
   pre_build:
     commands:
       - echo Pre-Build completed on `date`
