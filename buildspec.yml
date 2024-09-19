@@ -43,10 +43,6 @@ phases:
   post_build:
     commands:
       - echo Build completed on $DATE
-artifacts:
-  files:
-    - target/spring-boot-jsp-0.0.1-SNAPSHOT.war  # 업로드 할 파일들
-  discard-paths: yes # 파일명 기준으로만 업로드
 cache:
   paths:
     - '/root/.m2/**/*'   # S3 cache에 등록할 파일들
