@@ -43,6 +43,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on $DATE
+artifacts:
+  files:
+    - target/demo.war
 cache:
   paths:
     - '/root/.m2/**/*'   # S3 cache에 등록할 파일들
