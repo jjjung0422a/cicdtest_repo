@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-      run-as: demo
+      run-as: root
       commands:
         - export JAVA_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
         - export JDK_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
@@ -35,16 +35,17 @@ phases:
           done
   pre_build:
     commands:
+      - echo Nothing to do in the pre_build phase...
+      - yum install java-17-amazon-corretto-devel -y
+      - alternatives --set java /usr/lib/jvm/java-17-amazon-corretto.aarch64/bin/java
       - echo Pre-Build completed on `date`
   build:
     commands:
-      - echo Build started on 'date'
+      - chmod +x ./gradlew
+      - ./gradlew build
   post_build:
     commands:
       - echo Build completed on $DATE
-artifacts:
-  files:
-    - target/demo.war
 cache:
   paths:
     - '/root/.m2/**/*'   # S3 cache에 등록할 파일들
