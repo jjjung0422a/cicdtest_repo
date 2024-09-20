@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-      run-as: root
+      run-as: demo
       commands:
         - export JAVA_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
         - export JDK_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
@@ -43,6 +43,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on $DATE
+artifacts:
+  files:
+    - target/demo.war
 cache:
   paths:
     - '/root/.m2/**/*'   # S3 cache에 등록할 파일들
