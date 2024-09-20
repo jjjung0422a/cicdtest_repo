@@ -41,7 +41,7 @@ phases:
       - echo Pre-Build completed on `date`
   build:
     commands:
-      - chmod +x ./gradlew
+      - chmod +x ./gradle
       - ./gradlew build
   post_build:
     commands:
